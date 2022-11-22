@@ -4,7 +4,7 @@ Forests are an important source of biodiversity and economic resources globally.
 
 ## The model
 
-$$N_{TOT_{t+1}}= \sum_{i} r_{i} N_{i_{t}} (1-\frac{\sum_{i} N_{i_{t}}}{K}) - \sum_{i}h_{i}N_{i_{t}}$$
+$$N_{TOT_{t+1}}= \sum_{i} r_{i} N_{i_{t}} \left(1-\frac{\sum_{i} N_{i_{t}}}{K}\right) - \sum_{i}h_{i}N_{i_{t}}$$
 
 
 ### Parameter
