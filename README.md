@@ -13,9 +13,11 @@ $$N_{TOT_{t+1}}= \sum_{i} r_{i} N_{i_{t}} (1-\frac{\sum_{i} N_{i_{t}}}{K}) - \su
 | ------|:------ | ----------- |
 |$r_{i_{t}}$| Growth rate | One per species per time |
 | $h_{i_{t}}$      | Harvest rate       |   One per species per time          |
-| $K$  | Total forest size       |  Single values |
-|       |        |             |
-|       |        |             |
-|       |        |             |
+| $K$  | Total forest size       |  Single value |
+
+
+## Growth rates
+
+$$r_{i_{t}}$$
 
 
