@@ -23,4 +23,30 @@ $$r_{i_{t}}$$
 
 **Notes on the order of the order of the simulation**
 
+## Initial conditions:
+
+### Initial conditions options.
+* All trees start with the same abundance
+* Tree species start with random abundances.
+* Tree species start with abundances inversely proportional to their growth rate means.
+
+
+# Non-harvesting model
+
+1) Draw number of individuals per species that die in that cycle.
+  * **Model options**
+    * Draw 'die/not-die' state for each individual ($d~Bernoulli(p_{i})$ where $p_{i}$ is the probability of an individual of species $i$ dying from causes different than harvesting).
+
+## In each iteration
+
+1) Generate random number of individuals to
+
+
+
+
+
+
+
+
+
 
