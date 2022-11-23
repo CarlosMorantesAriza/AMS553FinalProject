@@ -40,8 +40,8 @@ $$r_{i_{t}}$$
 2. Generate the number of individuals per species that enter the population.
    * **Model options**
      * Two steps approach:
-      * Step 1: Generate number of saplings per tree per species.
-      * Step 2: Draw 'recruit/not-recruit' state for each sapling (I assume this should be something like $Binom(\frac{\sum_i N_i}{K})$ ).
+      * Step 1: Generate number of saplings produced per tree per species.
+      * Step 2: Draw 'recruit/not-recruit' state for each sapling (maybe this should be something like $Bernoulli(\frac{\sum_i N_i}{K})$ ). Or draw 'recruit/not-recruit' state for all saplings from a single species (maybe this should be something like $Binom(saplings_{i}, \frac{saplings_{i}}{\sum_{i} saplings_{i}})$ )
      
 
 ## In each iteration
