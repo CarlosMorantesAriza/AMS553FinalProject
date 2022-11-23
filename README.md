@@ -33,6 +33,8 @@ $$r_{i_{t}}$$
 
 # Non-harvesting model
 
+## In each iteration
+
 1. Draw number of individuals per species that die in that cycle.
    * **Model options**
      * Draw 'die/not-die' state for each individual ( $d \sim Bernoulli(p_{i})$ where $p_{i}$ is the probability of an individual of species $i$ dying from causes different than harvesting). Computationally inefficient. Boring :) .
@@ -42,14 +44,27 @@ $$r_{i_{t}}$$
      * Two steps approach:
       * Step 1: Generate number of saplings produced per tree per species.
       * Step 2: Draw 'recruit/not-recruit' state for each sapling (maybe this should be something like $Bernoulli(\frac{\sum_i N_i}{K})$ ). Or draw 'recruit/not-recruit' state for all saplings from a single species (maybe this should be something like $Binom(saplings_{i}, \frac{saplings_{i}}{\sum_{i} saplings_{i}})$ )
-  *  Single step approach: Generate number of recruited trees per species (maybe something like $Pois(\frac{\sum_i N_i}{K})$ or $Pois(\frac{K- \sum_i N_i}{K} \frac{N_i}{\sum_i N_i})$ )   
+     *  Single step approach: Generate number of recruited trees per species (maybe something like $Pois(\frac{\sum_i N_i}{K})$ or $Pois(\frac{K- \sum_i N_i}{K} \frac{N_i}{\sum_i N_i})$ )   
      
+3) Measure the number of individuals per species.
 
-## In each iteration
+# Harvesting model
 
-1) Generate random number of individuals per species that die in the iteration.
-2) Generate the number of individuals per species that enter the population.
 
+1. Draw number of individuals per species that die in that cycle.
+   * **Model options**
+     * Draw 'die/not-die' state for each individual ( $d \sim Bernoulli(p_{i})$ where $p_{i}$ is the probability of an individual of species $i$ dying from causes different than harvesting). Computationally inefficient. Boring :) .
+     * Draw 'die/not-die' state for the current population of species $i$ ( $d_{t} \sim Binom(N_{i_{t}},p_{i})$ ). Faster, little less boring.
+2. Generate the number of individuals per species that enter the population.
+   * **Model options**
+     * Two steps approach:
+      * Step 1: Generate number of saplings produced per tree per species.
+      * Step 2: Draw 'recruit/not-recruit' state for each sapling (maybe this should be something like $Bernoulli(\frac{\sum_i N_i}{K})$ ). Or draw 'recruit/not-recruit' state for all saplings from a single species (maybe this should be something like $Binom(saplings_{i}, \frac{saplings_{i}}{\sum_{i} saplings_{i}})$ )
+     *  Single step approach: Generate number of recruited trees per species (maybe something like $Pois(\frac{\sum_i N_i}{K})$ or $Pois(\frac{K- \sum_i N_i}{K} \frac{N_i}{\sum_i N_i})$ )   
+     
+3. Select trees to harvest. 
+  * **Model options**
+    * Spatially explicit model: 
 
 
 
