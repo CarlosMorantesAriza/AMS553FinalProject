@@ -14,7 +14,7 @@ $$N_{TOT_{t+1}}= \sum_{i} r_{i} N_{i_{t}} \left(1-\frac{\sum_{i} N_{i_{t}}}{K}\r
 |$r_{i_{t}}$| Growth rate | One per species per time |
 | $h_{i_{t}}$      | Harvest rate       |   One per species per time          |
 | $K$  | Total forest size       |  Single value |
-| $S$ | Size | Arbitrary selected sizes. Large size = low death rate, low growth rate |
+| $S$ | Size | Arbitrary selected sizes. Large size = low death rate, low growth rate.  |
 
 
 ## Growth rates
@@ -64,6 +64,17 @@ $$r_{i_{t}}$$
      *  Single step approach: Generate number of recruited trees per species (maybe something like $Pois(\frac{\sum_i N_i}{K})$ or $Pois(\frac{K- \sum_i N_i}{K} \frac{N_i}{\sum_i N_i})$ )   
      
 3. Select trees to harvest. 
+Each species has its own harvesting rate (long lived low, short-lived high)
+Harvest by proportion:
+  * What is the effect of harvesting y percent of each species every z years.
+| Species | Proportion  | Time step       |
+| ------|:------ | ----------- |
+| A| $j \in {0.01}$ | 5 |
+| B| 0.01 | 5 |
+| C| 0.01 | 5 |
+| D| 0.01 | 5 |
+| E| 0.01 | 5 |
+  * 
   * **Model options**
     * Spatially explicit model: 
 
