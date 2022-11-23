@@ -67,13 +67,15 @@ $$r_{i_{t}}$$
 Each species has its own harvesting rate (long lived low, short-lived high)
 Harvest by proportion:
   * What is the effect of harvesting y percent of each species every z years.
-| Species | Proportion  | Time step       |
+| Species | Proportion  | Time step |
 | ------|:------ | ----------- |
-| A| $j \in {0.01}$ | 5 |
-| B| 0.01 | 5 |
-| C| 0.01 | 5 |
-| D| 0.01 | 5 |
-| E| 0.01 | 5 |
+| A | $j \in {0.01}$ | 5 |
+| B | 0.01 | 5 |
+| C | 0.01 | 5 |
+| D | 0.01 | 5 |
+| E | 0.01 | 5 |
+
+
   * 
   * **Model options**
     * Spatially explicit model: 
