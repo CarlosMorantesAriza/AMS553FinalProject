@@ -85,7 +85,7 @@ Harvest by proportion:
 
 
 
-
+Scenario Spreadsheet: https://docs.google.com/spreadsheets/d/19jHNMtIbE_P-EOxpflBBQBJnVxJdUdxf1SgPhaa7HUs/edit?usp=sharing
 
 
 
