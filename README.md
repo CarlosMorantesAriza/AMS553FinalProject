@@ -35,7 +35,7 @@ $$r_{i_{t}}$$
 
 1. Draw number of individuals per species that die in that cycle.
    * **Model options**
-     * Draw 'die/not-die' state for each individual ($d~Bernoulli(p_{i})$ where $p_{i}$ is the probability of an individual of species $i$ dying from causes different than harvesting).
+     * Draw 'die/not-die' state for each individual ($d\~Bernoulli(p_{i})$ where $p_{i}$ is the probability of an individual of species $i$ dying from causes different than harvesting).
 
 ## In each iteration
 
