@@ -83,8 +83,8 @@ Harvest by proportion:
     * Spatially explicit model: 
 
 
-
-
+Scenario spreadsheet
+https://docs.google.com/spreadsheets/d/19jHNMtIbE_P-EOxpflBBQBJnVxJdUdxf1SgPhaa7HUs/edit?usp=sharing 
 
 
 
