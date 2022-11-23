@@ -71,11 +71,11 @@ Harvest by proportion:
 
 | Species | Proportion  | Time step |
 | ------|:------ | ----------- |
-| A | $j \in {0.01, 0.05, 0.1}$ | $t \in {1,5,10} $ |
-| B | $j \in {0.01, 0.05, 0.1}$ | $t \in {1,5,10} $ |
-| C | $j \in {0.01, 0.05, 0.1}$ | $t \in {1,5,10} $ |
-| D | $j \in {0.01, 0.05, 0.1}$ | $t \in {1,5,10} $ |
-| E | $j \in {0.01, 0.05, 0.1}$ | $t \in {1,5,10} $ |
+| A | $j \in \{ 0.01, 0.05, 0.1 \}$ | $t \in \{1,5,10\} $ |
+| B | $j \in \{ 0.01, 0.05, 0.1 \}$ | $t \in \{1,5,10\} $ |
+| C | $j \in \{ 0.01, 0.05, 0.1 \}$ | $t \in \{1,5,10\} $ |
+| D | $j \in \{ 0.01, 0.05, 0.1 \}$ | $t \in \{1,5,10\} $ |
+| E | $j \in \{ 0.01, 0.05, 0.1 \}$ | $t \in \{1,5,10\} $ |
 
 
 
@@ -83,8 +83,8 @@ Harvest by proportion:
     * Spatially explicit model: 
 
 
-Scenario spreadsheet
-https://docs.google.com/spreadsheets/d/19jHNMtIbE_P-EOxpflBBQBJnVxJdUdxf1SgPhaa7HUs/edit?usp=sharing 
+
+
 
 
 
