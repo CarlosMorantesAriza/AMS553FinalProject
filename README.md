@@ -41,7 +41,7 @@ $$r_{i_{t}}$$
    * **Model options**
      * Two steps approach:
       * Step 1: Generate number of saplings per tree per species.
-      * Step 2: Draw 'recruit/not-recruit' state for each sapling (I assume this should be something like $Binom(\frac{\sum_i N_i}{K})$).
+      * Step 2: Draw 'recruit/not-recruit' state for each sapling (I assume this should be something like $Binom(\frac{\sum_i N_i}{K})$ ).
      
 
 ## In each iteration
