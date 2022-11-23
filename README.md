@@ -35,12 +35,19 @@ $$r_{i_{t}}$$
 
 1. Draw number of individuals per species that die in that cycle.
    * **Model options**
-     * Draw 'die/not-die' state for each individual ( $d \sim Bernoulli(p_{i})$ where $p_{i}$ is the probability of an individual of species $i$ dying from causes different than harvesting).
-     * Draw 'die/not-die' state for the current population of species $i$ ( $d_{t} \sim Binom(N_{i_{t}},p_{i})$ )
+     * Draw 'die/not-die' state for each individual ( $d \sim Bernoulli(p_{i})$ where $p_{i}$ is the probability of an individual of species $i$ dying from causes different than harvesting). Computationally inefficient. Boring :) .
+     * Draw 'die/not-die' state for the current population of species $i$ ( $d_{t} \sim Binom(N_{i_{t}},p_{i})$ ). Faster, little less boring.
+2. Generate the number of individuals per species that enter the population.
+   * **Model options**
+     * Two steps approach:
+      * Step 1: Generate number of saplings per tree per species.
+      * Step 2: Draw 'recruit/not-recruit' state for each sapling (I assume this should be something like $Binom(\frac{\sum_i N_i}{K})$).
+     
 
 ## In each iteration
 
-1) Generate random number of individuals to
+1) Generate random number of individuals per species that die in the iteration.
+2) Generate the number of individuals per species that enter the population.
 
 
 
