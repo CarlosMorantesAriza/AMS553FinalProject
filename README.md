@@ -14,6 +14,7 @@ $$N_{TOT_{t+1}}= \sum_{i} r_{i} N_{i_{t}} \left(1-\frac{\sum_{i} N_{i_{t}}}{K}\r
 |$r_{i_{t}}$| Growth rate | One per species per time |
 | $h_{i_{t}}$      | Harvest rate       |   One per species per time          |
 | $K$  | Total forest size       |  Single value |
+| $S$ | Size | Arbitrary selected sizes. Large size = low death rate, low growth rate |
 
 
 ## Growth rates
