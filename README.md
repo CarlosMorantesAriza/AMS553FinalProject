@@ -21,3 +21,6 @@ $$N_{TOT_{t+1}}= \sum_{i} r_{i} N_{i_{t}} \left(1-\frac{\sum_{i} N_{i_{t}}}{K}\r
 $$r_{i_{t}}$$
 
 
+**Notes on the order of the order of the simulation**
+
+
