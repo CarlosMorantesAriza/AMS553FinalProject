@@ -6,6 +6,10 @@ henry_model=function(size_a=1, size_b=1, size_c=1, size_d=1, size_e=1, b_factor=
   b = b_factor / sizes #birth chance
   d = b_factor*d_prop / sizes #death chance
   
+  sizes = c(10, 20, 30, 40, 50)
+  b = 2 / sizes #birth chance
+  d = 1 / sizes #death chance
+  
   death <- function(spec) {
     return(rbernoulli(1, p = 1 - d[spec]) * spec)
   }
@@ -32,11 +36,10 @@ henry_model=function(size_a=1, size_b=1, size_c=1, size_d=1, size_e=1, b_factor=
   
   
   maxtime = runtime
-  
+  time = 1:maxtime
   diversity = rep(0 , maxtime)
-  
   harvest_count = rep(0, 5)
-  
+  abuns = matrix(, nrow = maxtime, ncol = 5)
   for (t in 1:maxtime) {
     
     #natural death
@@ -50,17 +53,16 @@ henry_model=function(size_a=1, size_b=1, size_c=1, size_d=1, size_e=1, b_factor=
     }
     
     #harvesting: based on relative abundances
-    counts = rep(0,6)
+    counts = rep(0,5)
     for (i in 1:dim) {
       for (j in 1:dim) {
         spec = landscape[i,j]
         counts[spec] = counts[spec] + 1
       }
     }
-    counts = counts[-1]
     counts = counts / sum(counts)
     harvest_probs = counts
-    #harvest_probs = rep(.2, 5)
+    #harvest_probs = rep(.01, 5)
     for (i in 1:dim) {
       for (j in 1:dim) {
         if (landscape[i,j] != 0) {
@@ -75,12 +77,12 @@ henry_model=function(size_a=1, size_b=1, size_c=1, size_d=1, size_e=1, b_factor=
     }
     
     # points = sort(ceiling(runif(4) * dim))
-    # 
+    #
     # for (i in points[1]: points[2]) {
     #   for (j in  points[3]: points[4]) {
     #     if (landscape[i,j] != 0) {
     #       spec = landscape[i,j]
-    #       trial = rbernoulli(1, p = .5)
+    #       trial = rbernoulli(1, p = 0)
     #       if (trial == 0){
     #         harvest_count[spec] = harvest_count[spec] + 1
     #       }
@@ -152,10 +154,16 @@ henry_model=function(size_a=1, size_b=1, size_c=1, size_d=1, size_e=1, b_factor=
         }
       }
     }
-    counts = table(landscape)
-    counts = counts[-1]
+    counts = rep(0,5)
+    for (i in 1:dim) {
+      for (j in 1:dim) {
+        spec = landscape[i,j]
+        counts[spec] = counts[spec] + 1
+      }
+    }
     counts = counts / sum(counts)
     diversity[t] = length(counts[counts > .1])
+    abuns[t,] = counts
   }
   params=c(size_a, size_b, size_c, size_d, size_e, b_factor, d_prop,
            runtime, dim)
@@ -163,7 +171,50 @@ henry_model=function(size_a=1, size_b=1, size_c=1, size_d=1, size_e=1, b_factor=
                    "size_e", "b_factor_1", "b_factor_2", "b_factor_3", "b_factor_4"
                    , "b_factor_5", "d_prop",
                    "runtime", "dim")
-  return(list(outcome = diversity, parameters = params
+  return(list(outcome = list(diversity=diversity, abundances=abuns), parameters = params
   ))
 }
 
+
+#### Parallel running
+
+library(purrr)
+library(deSolve)
+library(deldir)
+library(tidyverse)
+library(tensor)
+library(deldir)
+library(MASS)
+library(abind)
+library(future)
+library(furrr)
+library(parallel)
+library(tictoc)
+library(future.apply)
+trabajadores=detectCores()-8
+source('henryscode.R')
+parameter_tibble=
+  expand.grid(
+    size_a=rep(10, times=100), # This line will make the parameter tibble for 100 simulations with the same conditions simulations simulations
+    size_b=c(20),
+    size_c=c(30),
+    size_d=c(40),
+    size_e=c(50),
+    d_prop=1,
+    runtime=1000,
+    dim=100
+    )
+
+
+tic('I finished running')
+plan(multisession, workers = trabajadores)
+results = 
+  future_pmap(
+    .l = parameter_tibble,
+    .f = henry_model,
+    .options=furrr_options(seed = TRUE)
+  )
+
+
+
+toc()
