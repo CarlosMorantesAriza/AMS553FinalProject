@@ -46,11 +46,10 @@ landscape = matrix(landscape_dt, nrow = dim,ncol = dim, byrow=TRUE)
 
 ```{r}
 maxtime = 1000
-
+time = 1:maxtime
 diversity = rep(0 , maxtime)
-
 harvest_count = rep(0, 5)
-
+abuns = matrix(, nrow = maxtime, ncol = 5)
 for (t in 1:maxtime) {
   
   #natural death
@@ -64,17 +63,16 @@ for (t in 1:maxtime) {
   }
   
   #harvesting: based on relative abundances
-  counts = rep(0,6)
+  counts = rep(0,5)
    for (i in 1:dim) {
     for (j in 1:dim) {
       spec = landscape[i,j]
       counts[spec] = counts[spec] + 1
     }
    }
-  counts = counts[-1]
   counts = counts / sum(counts)
   harvest_probs = counts
-  #harvest_probs = rep(.2, 5)
+  #harvest_probs = rep(.01, 5)
   for (i in 1:dim) {
     for (j in 1:dim) {
       if (landscape[i,j] != 0) {
@@ -87,14 +85,14 @@ for (t in 1:maxtime) {
       }
     }
   }
-  
+
   # points = sort(ceiling(runif(4) * dim))
-  # 
+  #
   # for (i in points[1]: points[2]) {
   #   for (j in  points[3]: points[4]) {
   #     if (landscape[i,j] != 0) {
   #       spec = landscape[i,j]
-  #       trial = rbernoulli(1, p = .5)
+  #       trial = rbernoulli(1, p = 0)
   #       if (trial == 0){
   #         harvest_count[spec] = harvest_count[spec] + 1
   #       }
@@ -166,18 +164,34 @@ for (t in 1:maxtime) {
       }
     }
   }
-  counts = table(landscape)
-  counts = counts[-1]
+  counts = rep(0,5)
+  for (i in 1:dim) {
+    for (j in 1:dim) {
+      spec = landscape[i,j]
+      counts[spec] = counts[spec] + 1
+    }
+   }
   counts = counts / sum(counts)
   diversity[t] = length(counts[counts > .1])
+  abuns[t,] = counts
 }
+```
+
+```{r}
+plot(time,abuns[,1], type="l", ylim=c(0,1), col="black",xlab="Time", ylab="Relative Abundance")
+lines(time,abuns[,2], col="red")
+lines(time,abuns[,3], col="blue")
+lines(time,abuns[,4], col="green")
+lines(time,abuns[,5], col="orange")
+legend(1, 1, legend=c("Species 1", "Species 2","Species 3", "Species 4","Species 5"), col=c("black","red","blue","green","orange"), lty=1)
 ```
 
 ```{r}
 plot(diversity)
 ```
 
+
 ```{r}
-sum(harvest_count)
+harvest_count
 ```
 
