@@ -89,4 +89,6 @@ Scenario Spreadsheet: https://docs.google.com/spreadsheets/d/19jHNMtIbE_P-EOxpfl
 
 
 
+# Relative abundances
 
+$$r_i= \sum_{i}^{N} frac{n_i}{N}$$
